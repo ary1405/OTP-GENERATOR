@@ -1,0 +1,52 @@
+<% include ./partials/messages %>
+<h1 class="lead mb-3">Welcome <%= user.name %></h1>
+<h3 class="mt-4">Your email id is: <%= user.email %></h3>
+<h1 class="mt-4">Dashboard</h1>
+
+<form action="./dashboard" method="POST">
+  <div class="form-group">
+    <h4><label> Add a Service</label></h4>
+    <label> Email</label>
+    <input
+      type="text"
+      id="email"
+      name="email"
+      class="form-control"
+      placeholder="Enter email"
+      value="<%= user.email %>"
+    />
+    <label> Service Name</label>
+
+    <input
+      type="text"
+      id="service"
+      name="service"
+      class="form-control"
+      placeholder="Enter Service Name"
+    />
+    <label> Secret Key</label>
+
+    <input
+      type="text"
+      id="key"
+      name="key"
+      class="form-control"
+      placeholder="Ennter Secret Key"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary btn-block">Add</button>
+</form>
+<br />
+
+<a href="/users/logout" class="btn btn-primary btn-block">Logout</a>
+<br />
+<a href="/refresh" class="btn btn-primary btn-block">Refresh</a>
+
+<ul>
+  <% for( let index = 0; index < secret.length; index++ ) { %>
+  <li>
+    Service Name is <%= secret[index].service %> <br />OTP is = <%= otps[index]
+    %>
+  </li>
+  <% } %>
+</ul>
